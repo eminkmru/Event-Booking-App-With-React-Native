@@ -48,6 +48,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   homeCard: {
+    marginLeft: 10,
     backgroundColor: "#e2e2e2",
     height: 250,
     width: 150,

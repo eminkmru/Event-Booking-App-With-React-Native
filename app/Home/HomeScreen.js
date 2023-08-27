@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, Text, View } from "react-native";
 
 import { styles } from "./homecss";
 import FeaturedEvent from "../Components/Home/FeaturedEvent";
 import EventsList from "../Components/Home/EventsList";
+import axios from "axios";
 
 function HomeScreen() {
   return (

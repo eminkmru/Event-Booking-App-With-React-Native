@@ -21,7 +21,7 @@ export default function App() {
             right: 20,
             backgroundColor: "#ffffff",
             borderRadius: 15,
-            height: 90,
+            height: 70,
             ...styles.shadow,
           },
 
@@ -37,7 +37,6 @@ export default function App() {
                 style={{
                   alignItems: "center",
                   justifyContent: "center",
-                  top: 10,
                 }}
               >
                 <FontAwesome
@@ -66,7 +65,6 @@ export default function App() {
                 style={{
                   alignItems: "center",
                   justifyContent: "center",
-                  top: 10,
                 }}
               >
                 <FontAwesome
@@ -95,7 +93,6 @@ export default function App() {
                 style={{
                   alignItems: "center",
                   justifyContent: "center",
-                  top: 10,
                 }}
               >
                 <FontAwesome

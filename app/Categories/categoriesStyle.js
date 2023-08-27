@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     top: 15,
     left: 24,
     height: 100,
+    width: "100%",
   },
   categoriesCardContentTitle: {
     fontSize: 15,
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
   categoriesCardContentImg: {
     position: "absolute",
     bottom: -20,
-    right: -40,
+    right: 45,
     width: 60,
     height: 60,
   },

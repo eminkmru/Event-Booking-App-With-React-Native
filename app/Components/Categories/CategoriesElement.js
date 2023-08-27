@@ -2,7 +2,7 @@ import React from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "../../Categories/categoriesStyle";
 
-function CategoriesElement() {
+function CategoriesElement({ title }) {
   return (
     <TouchableOpacity
       style={{
@@ -20,7 +20,7 @@ function CategoriesElement() {
         />
       </View>
       <View style={styles.categoriesCardContent}>
-        <Text style={styles.categoriesCardContentTitle}>Categories </Text>
+        <Text style={styles.categoriesCardContentTitle}>{title} </Text>
         <Image
           source={require("../../../assets/sing.png")}
           style={styles.categoriesCardContentImg}
