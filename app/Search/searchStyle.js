@@ -18,14 +18,27 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     gap: 20,
+    marginBottom: 20,
   },
   searchBody: {
     marginTop: 20,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "red",
+    gap: 20,
+    marginBottom: 300,
   },
   searchCard: {
     width: 340,
+    borderBottomColor: "grey",
+    borderBottomWidth: 1,
+    paddingBottom: 20,
+  },
+  searchButton: {
+    backgroundColor: "#7F2CCB",
+    paddingHorizontal: 10,
+    paddingVertical: 9,
+    borderRadius: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

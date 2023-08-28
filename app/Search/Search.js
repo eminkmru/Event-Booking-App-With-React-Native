@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeAreaView, Text, TextInput, View } from "react-native";
+import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
 import { styles } from "./searchStyle";
 import { FontAwesome } from "@expo/vector-icons";
 import SearchCard from "../Components/Search/SearchCard";
@@ -19,9 +19,17 @@ function Search() {
         />
       </View>
 
-      <View style={styles.searchBody}>
-        <SearchCard />
-      </View>
+      <ScrollView>
+        <View style={styles.searchBody}>
+          <SearchCard />
+
+          <SearchCard />
+          <SearchCard />
+          <SearchCard />
+          <SearchCard />
+          <SearchCard />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }

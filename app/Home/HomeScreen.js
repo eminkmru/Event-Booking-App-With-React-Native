@@ -1,30 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import React from "react";
+import { SafeAreaView } from "react-native";
 
 import { styles } from "./homecss";
-import FeaturedEvent from "../Components/Home/FeaturedEvent";
-import EventsList from "../Components/Home/EventsList";
-import axios from "axios";
+import HomeMainScreen from "../Components/Home/HomeMainScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import EventDetail from "../EventDetail/EventDetail";
+
+const Stack = createStackNavigator();
 
 function HomeScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View style={styles.firstView}>
-          <FeaturedEvent />
-        </View>
-        <View style={styles.secondView}>
-          <EventsList
-            title={"Today's Event"}
-            // data={}
-          />
-          <EventsList
-            title={"Featured Event"}
-            // data={}
-          />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="HomeMainScreen" component={HomeMainScreen} />
+      <Stack.Screen
+        name="EventsDetail"
+        component={EventDetail}
+        options={({ route }) => ({
+          title: route.params.title,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: "#ffffff",
+            shadowColor: "#ffffff",
+            elevation: 0,
+          },
+          headerTintColor: "#76468F",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+      />
+    </Stack.Navigator>
   );
 }
 
