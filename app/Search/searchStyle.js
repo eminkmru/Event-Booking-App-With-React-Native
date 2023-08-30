@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     top: 40,
-    marginBottom: 100,
+    marginBottom: 70,
   },
   searchbarContainer: {
     padding: 10,
@@ -18,20 +18,17 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     gap: 20,
-    marginBottom: 20,
+    marginBottom: 40,
   },
   searchBody: {
-    marginTop: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 20,
-    marginBottom: 300,
+    marginHorizontal: 20,
+    marginBottom: 440,
   },
   searchCard: {
     borderBottomColor: "grey",
     borderBottomWidth: 1,
     paddingBottom: 20,
-    marginBottom: 80,
+    marginBottom: 40,
   },
   searchButton: {
     backgroundColor: "#7F2CCB",
@@ -45,6 +42,6 @@ export const styles = StyleSheet.create({
     width: 240,
     height: 40,
     paddingHorizontal: 10,
-    color: "white",
+    color: "#05375a",
   },
 });

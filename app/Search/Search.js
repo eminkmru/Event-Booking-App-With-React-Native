@@ -1,32 +1,34 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
-import { styles } from "./searchStyle";
-import { FontAwesome } from "@expo/vector-icons";
-import SearchCard from "../Components/Search/SearchCard";
-import { TouchableOpacity } from "react-native";
+import SearchMainScreen from "../Components/Search/SearchMainScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import EventDetail from "../EventDetail/EventDetail";
 
+const Stack = createStackNavigator();
 function Search() {
   return (
-    <SafeAreaView>
-      <View style={styles.searchHeader}>
-        <Text>Search</Text>
-      </View>
-      <View style={styles.searchbarContainer}>
-        <FontAwesome name="search" size={18} color="grey" />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Search Events"
-          placeholderTextColor="grey"
-        />
-        <TouchableOpacity>
-          <FontAwesome name="sliders" size={18} color="grey" />
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView>
-        <View style={styles.searchBody}></View>
-      </ScrollView>
-    </SafeAreaView>
+    <Stack.Navigator
+      initialRouteName="SearchMainScreen"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="SearchMainScreen" component={SearchMainScreen} />
+      <Stack.Screen
+        name="EventDetail"
+        component={EventDetail}
+        options={({ route }) => ({
+          title: route.params.title,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: "#ffffff",
+            shadowColor: "#ffffff",
+            elevation: 0,
+          },
+          headerTintColor: "#76468F",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+      />
+    </Stack.Navigator>
   );
 }
 

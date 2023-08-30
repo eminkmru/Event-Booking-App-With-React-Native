@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, View } from "react-native";
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import FeaturedEvent from "./FeaturedEvent";
 import EventsList from "./EventsList";
 import { getAllEvent } from "../../api/categories";
@@ -9,6 +15,7 @@ function HomeMainScreen({ navigation }) {
   const [data, setData] = useState([]);
   const [todayEvent, setTodayEvent] = useState([]);
   const [featuredEvent, setFeaturedEvent] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const weekendEventGet = () => {
     setTodayEvent([]);
@@ -63,27 +70,46 @@ function HomeMainScreen({ navigation }) {
     getFeaturedEvent();
   }, [data]);
 
+  useEffect(() => {
+    if (todayEvent.length > 0 && featuredEvent.length > 0) {
+      setLoading(false);
+    }
+  }, [todayEvent, featuredEvent]);
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <ScrollView>
-          <View style={styles.firstView}>
-            <FeaturedEvent />
+      {loading ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <View>
+            <ActivityIndicator size="large" color="#76468F" />
           </View>
-          <View style={styles.secondView}>
-            <EventsList
-              title={"Events in This Week"}
-              data={todayEvent}
-              navigation={navigation}
-            />
-            <EventsList
-              title={"Featured Event"}
-              data={featuredEvent}
-              navigation={navigation}
-            />
-          </View>
-        </ScrollView>
-      </View>
+        </View>
+      ) : (
+        <View>
+          <ScrollView>
+            <View style={styles.firstView}>
+              <FeaturedEvent />
+            </View>
+            <View style={styles.secondView}>
+              <EventsList
+                title={"Bu Hafta Etkinlikleri"}
+                data={todayEvent}
+                navigation={navigation}
+              />
+              <EventsList
+                title={"Öne Çıkan Etkinlikler"}
+                data={featuredEvent}
+                navigation={navigation}
+              />
+            </View>
+          </ScrollView>
+        </View>
+      )}
     </SafeAreaView>
   );
 }

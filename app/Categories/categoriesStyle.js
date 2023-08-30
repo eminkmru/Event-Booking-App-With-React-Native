@@ -35,5 +35,6 @@ export const styles = StyleSheet.create({
   categoryContainer: {
     marginLeft: 30,
     marginRight: 30,
+    marginBottom: 60,
   },
 });
