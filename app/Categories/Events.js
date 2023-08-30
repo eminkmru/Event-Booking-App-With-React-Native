@@ -12,7 +12,6 @@ function Events({ route, navigation }) {
     const eventsByCategory = getEventsByCategory(route.params.title);
     setEvents(eventsByCategory);
   }, []);
-  console.log(events);
   return (
     <View style={styles.categoryContainer}>
       <FlatList

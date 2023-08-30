@@ -48,8 +48,11 @@ function SearchMainScreen({ navigation }) {
   };
 
   useEffect(() => {
-    const data = getAllEvent();
-    setEvents(data);
+    const fetchData = async () => {
+      const data = getAllEvent();
+      setEvents(data);
+    };
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -62,7 +65,6 @@ function SearchMainScreen({ navigation }) {
         return date >= selectedStartDate;
       });
       setFilteredEvents(filteredWithStartDateEvents);
-      return;
     }
     const filteredWithDateEvents = events.filter((event) => {
       if (event.EtkinlikBaslamaTarihi === undefined) return false;
@@ -90,7 +92,6 @@ function SearchMainScreen({ navigation }) {
       setLastResultsEvents(filteredEventsWithDateAndText, ...filteredEvents);
     }
   };
-  console.log(searchResults);
 
   return (
     <SafeAreaView>
@@ -116,7 +117,7 @@ function SearchMainScreen({ navigation }) {
           value={searchText}
         />
         <TouchableOpacity onPress={showFilterModal}>
-          <FontAwesome name="sliders" size={18} color="grey" />
+          <FontAwesome name="calendar" size={18} color="grey" />
         </TouchableOpacity>
       </View>
 

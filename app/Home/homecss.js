@@ -14,13 +14,14 @@ export const styles = StyleSheet.create({
   },
   featuredEvent: {
     position: "relative",
+    width: 350,
   },
   eventInfoCard: {
     position: "absolute",
     backgroundColor: "#410777",
     opacity: 0.8,
     width: 300,
-    top: "50%",
+    top: "70%",
     left: "7%",
     paddingVertical: 10,
     paddingHorizontal: 20,

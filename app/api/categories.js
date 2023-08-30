@@ -917,3 +917,11 @@ export const getAllEvent = () => {
 export const getEventById = (id) => {
   return DATA.find((etkinlik) => etkinlik.Id === id);
 };
+
+export const getOldEvents = () => {
+  return DATA.filter((etkinlik) => {
+    let today = new Date();
+    let etkinlikTarihi = new Date(etkinlik.EtkinlikBaslamaTarihi);
+    return etkinlikTarihi < today;
+  });
+};

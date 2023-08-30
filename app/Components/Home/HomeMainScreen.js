@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import FeaturedEvent from "./FeaturedEvent";
 import EventsList from "./EventsList";
-import { getAllEvent } from "../../api/categories";
+import { getAllEvent, getOldEvents } from "../../api/categories";
 import { styles } from "../../Home/homecss";
 
 function HomeMainScreen({ navigation }) {
@@ -16,12 +16,18 @@ function HomeMainScreen({ navigation }) {
   const [todayEvent, setTodayEvent] = useState([]);
   const [featuredEvent, setFeaturedEvent] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [oldEvents, setOldEvents] = useState([]);
+  const [randomNumber, setRandomNumber] = useState(0);
 
-  const weekendEventGet = () => {
+  const weekendEventGet = async () => {
     setTodayEvent([]);
     if (data.length === 0) return;
     const today = new Date();
-    const thisWeekEvents = data.filter((item) => {
+    const willComeEvents = await data.filter((item) => {
+      const eventDate = new Date(item.EtkinlikBaslamaTarihi);
+      return eventDate > today;
+    });
+    const thisWeekEvents = willComeEvents.filter((item) => {
       const eventDate = new Date(item.EtkinlikBaslamaTarihi);
       const diffTime = eventDate.getTime() - today.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -34,7 +40,11 @@ function HomeMainScreen({ navigation }) {
     setFeaturedEvent([]);
     if (data.length === 0) return;
     const today = new Date();
-    const featuredEventData = await data.filter((item) => {
+    const willComeEvents = await data.filter((item) => {
+      const eventDate = new Date(item.EtkinlikBaslamaTarihi);
+      return eventDate > today;
+    });
+    const featuredEventData = await willComeEvents.filter((item) => {
       const eventDate = new Date(item.EtkinlikBaslamaTarihi);
       const diffTime = eventDate.getTime() > today.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -68,6 +78,8 @@ function HomeMainScreen({ navigation }) {
   useEffect(() => {
     weekendEventGet();
     getFeaturedEvent();
+    const oldEvents = getOldEvents();
+    setOldEvents(oldEvents);
   }, [data]);
 
   useEffect(() => {
@@ -75,14 +87,15 @@ function HomeMainScreen({ navigation }) {
       setLoading(false);
     }
   }, [todayEvent, featuredEvent]);
+
   return (
     <SafeAreaView style={styles.container}>
       {loading ? (
         <View
           style={{
             flex: 1,
-            justifyContent: "center",
             alignItems: "center",
+            top: "40%",
           }}
         >
           <View>
@@ -93,7 +106,7 @@ function HomeMainScreen({ navigation }) {
         <View>
           <ScrollView>
             <View style={styles.firstView}>
-              <FeaturedEvent />
+              <FeaturedEvent data={featuredEvent[0]} />
             </View>
             <View style={styles.secondView}>
               <EventsList
@@ -104,6 +117,11 @@ function HomeMainScreen({ navigation }) {
               <EventsList
                 title={"Öne Çıkan Etkinlikler"}
                 data={featuredEvent}
+                navigation={navigation}
+              />
+              <EventsList
+                title={"Geçmiş Etkinlikler"}
+                data={oldEvents}
                 navigation={navigation}
               />
             </View>
