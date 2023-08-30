@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
   homeCard: {
     marginLeft: 10,
     backgroundColor: "#e2e2e2",
-    height: 300,
+    height: 280,
     width: 150,
     borderRadius: 10,
     marginRight: 20,

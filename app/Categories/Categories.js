@@ -6,6 +6,7 @@ import CategoriesElement from "../Components/Categories/CategoriesElement";
 import { createStackNavigator } from "@react-navigation/stack";
 import CategoriesHome from "../Components/Categories/CategoriesHome";
 import Events from "./Events";
+import EventDetail from "../EventDetail/EventDetail";
 
 const Stack = createStackNavigator();
 const Categories = () => {
@@ -19,6 +20,23 @@ const Categories = () => {
       <Stack.Screen
         name="Events"
         component={Events}
+        options={({ route }) => ({
+          title: route.params.title,
+          headerShown: true,
+          headerStyle: {
+            backgroundColor: "#ffffff",
+            shadowColor: "#ffffff",
+            elevation: 0,
+          },
+          headerTintColor: "#76468F",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        })}
+      />
+      <Stack.Screen
+        name="EventDetail"
+        component={EventDetail}
         options={({ route }) => ({
           title: route.params.title,
           headerShown: true,

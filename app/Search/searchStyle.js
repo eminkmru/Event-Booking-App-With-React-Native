@@ -28,10 +28,10 @@ export const styles = StyleSheet.create({
     marginBottom: 300,
   },
   searchCard: {
-    width: 340,
     borderBottomColor: "grey",
     borderBottomWidth: 1,
     paddingBottom: 20,
+    marginBottom: 80,
   },
   searchButton: {
     backgroundColor: "#7F2CCB",
@@ -40,5 +40,11 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
+  },
+  searchInput: {
+    width: 240,
+    height: 40,
+    paddingHorizontal: 10,
+    color: "white",
   },
 });

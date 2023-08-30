@@ -4,12 +4,12 @@ import { FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { styles } from "../../Search/searchStyle";
 
-function SearchCard() {
+function SearchCard({ title, date, location, image, onPress }) {
   return (
     <View style={styles.searchCard}>
       <Image
-        source={require("../../../assets/events.png")}
-        style={{ borderRadius: 10, marginBottom: 20 }}
+        source={{ uri: `${image}` }}
+        style={{ borderRadius: 10, marginBottom: 20, height: 200 }}
       />
       <View
         style={{
@@ -20,16 +20,28 @@ function SearchCard() {
         <View
           style={{
             flexDirection: "row",
-            gap: 10,
+            justifyContent: "space-between",
           }}
         >
-          <FontAwesome
-            name="calendar"
-            size={20}
-            color="black"
-            style={{ color: "grey" }}
-          />
-          <Text style={{ color: "grey" }}>12-12-2021</Text>
+          <Text style={{ fontSize: 20, fontWeight: "bold", maxWidth: 200 }}>
+            {title}
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 10,
+            }}
+          >
+            <FontAwesome
+              name="calendar"
+              size={20}
+              color="black"
+              style={{ color: "grey" }}
+            />
+            <Text style={{ color: "grey" }}>
+              {date.split("T")[0].split("-").reverse().join(" ")}
+            </Text>
+          </View>
         </View>
         <View
           style={{
@@ -50,10 +62,10 @@ function SearchCard() {
               color="black"
               style={{ color: "grey" }}
             />
-            <Text style={{ color: "grey" }}>Location</Text>
+            <Text style={{ color: "grey" }}>{location}</Text>
           </View>
           <View>
-            <TouchableOpacity style={styles.searchButton}>
+            <TouchableOpacity style={styles.searchButton} onPress={onPress}>
               <Text style={{ color: "white" }}>View Details</Text>
             </TouchableOpacity>
           </View>

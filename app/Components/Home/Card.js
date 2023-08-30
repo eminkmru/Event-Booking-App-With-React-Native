@@ -51,16 +51,8 @@ function Card({ title, location, date, price, id, navigation, eventImage }) {
         </View>
         <View style={styles.cardDetailText}>
           <FontAwesome name="calendar" size={15} color="black" />
-          <Text>{date}</Text>
+          <Text>{date.split("-").reverse().join(" ")}</Text>
         </View>
-        {price && (
-          <View style={styles.cardDetailText}>
-            <FontAwesome name="money" size={15} color="black" />
-            <Text style={{ color: "purple", fontWeight: "bold" }}>
-              {price && "Ücretsiz"}
-            </Text>
-          </View>
-        )}
       </View>
       <TouchableOpacity
         style={styles.cardDetailsButton}

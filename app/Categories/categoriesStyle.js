@@ -32,4 +32,8 @@ export const styles = StyleSheet.create({
     width: 60,
     height: 60,
   },
+  categoryContainer: {
+    marginLeft: 30,
+    marginRight: 30,
+  },
 });
