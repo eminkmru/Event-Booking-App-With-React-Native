@@ -6,11 +6,18 @@ Events App is a React Native application where users can see events and filter t
 
 ## Features
 The app allows users can see events in date order.
+
 Search Feature: Users can quickly find the event they want by searching the event name.
+
 Category Section: Events are organized by categories and users can select the category they want.
+
 This Week's Events: This week's featured events are listed on the main screen.
+
 Featured Events: Featured events are also displayed on the main screen.
+
 Technologies Used
+
+
 
 ##This project uses the following technologies:
 
