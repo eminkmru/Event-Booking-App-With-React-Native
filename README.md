@@ -19,10 +19,13 @@ Technologies Used
 
 
 
-##This project uses the following technologies:
+## This project uses the following technologies:
 
 React Native
+
 React Navigation
+
+
 
 ## Installation
 If you want to run the project in a local environment, follow the steps below:
